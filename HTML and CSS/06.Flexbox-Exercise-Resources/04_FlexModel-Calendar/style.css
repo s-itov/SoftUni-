@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+/* -FOR JUDGE- 
+div {
+  display: flex;
+  max-width: 65vw;
+} */
+
+.container {
+    display: flex;
+    max-width: 65vw;
+  }
+
+.container section {
+  display: flex;
+  text-align: center;
+}
+
+.container .item {
+  border: 1px solid black;
+  padding: 12px;
+}
+
+.container .week {
+  width: 75%;
+  flex-wrap: wrap;
+}
+
+.container .week .item {
+  width: 20%;
+}
+
+.container .week .item:nth-child(1),
+.container .week .item:nth-child(7) {
+  flex-basis: 100%;
+}
+
+.container .week .item:nth-child(8),
+.container .week .item:nth-child(9) {
+  flex-basis: 50%;
+}
+
+.container .notes {
+  width: 25%;
+  flex-direction: column;
+}
+
+.container .notes .item {
+  flex: 1 1 100%;
+}

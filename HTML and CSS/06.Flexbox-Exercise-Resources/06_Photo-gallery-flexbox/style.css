@@ -1,0 +1,26 @@
+body {
+    background-color: lightgray;
+    display: flex;
+
+
+}
+
+.gallery ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 55px;
+    max-width: 55vw;
+}
+
+.gallery ul li {
+    display: flex;
+
+    border: 8px solid #000;
+    padding: 12px;
+    background-color: white;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 0px 0px 5px #000;
+}
