@@ -2,7 +2,8 @@ export default function Todo({
     _id,
     text,
     isCompleted,
-    toggleTodoStatus
+    toggleTodoStatus,
+    onDelete,
  }) {
 
     return (
@@ -11,6 +12,8 @@ export default function Todo({
             <td>{isCompleted ? 'Completed' : 'inComplete'}</td>
             <td className="todo-action">
                 <button className="btn todo-btn" onClick={() => toggleTodoStatus(_id)}>Change status</button>
+                <button className="btn todo-btn" onClick={() => onDelete(_id)}>Delete</button>
+
             </td>
         </tr>
     );

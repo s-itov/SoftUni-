@@ -260,6 +260,7 @@ body {
   background: #24292f;
   border: none;
   padding: 5px 10px;
+  margin-right: 5px;
   height: 40px;
   color: white;
   cursor: pointer;

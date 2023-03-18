@@ -32,6 +32,9 @@ function App() {
         setTodos(state => state.map(todo => todo._id === id ? ({ ...todo, isCompleted: !todo.isCompleted }) : todo));
     };
 
+    const onDelete = (id) => {
+        setTodos(state => state.filter(t => t._id !== id));
+    }
 
     return (
         <div>
@@ -49,7 +52,7 @@ function App() {
 
                         {isLoading
                             ? <Loading />
-                            : <TodoList todos={todos} toggleTodoStatus={toggleTodoStatus} />
+                            : <TodoList todos={todos} toggleTodoStatus={toggleTodoStatus} onDelete={onDelete}/>
                         }
 
                     </div>

@@ -3,6 +3,7 @@ import Todo from "./Todo";
 export default function TodoList({
     todos,
     toggleTodoStatus,
+    onDelete,
 }) {
     return (
         <table className="table">
@@ -15,7 +16,7 @@ export default function TodoList({
             </thead>
             <tbody>
 
-                {todos.map(todo => ( <Todo key={todo._id} {...todo} toggleTodoStatus={toggleTodoStatus}/> ))}
+                {todos.map(todo => ( <Todo key={todo._id} {...todo} toggleTodoStatus={toggleTodoStatus} onDelete={onDelete}/> ))}
 
             </tbody>
         </table>
