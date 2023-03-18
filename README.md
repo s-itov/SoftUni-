@@ -1,3 +1,3 @@
-# :mortar_board: Software University - HTML & CSS - January 2023 Solutions
+# :mortar_board: Software University - Courses, Demos, Projects
 
 
