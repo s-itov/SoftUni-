@@ -5,7 +5,10 @@ const app = express();
 
 const PORT = 3000;
 
-//Handlebars
+// Express config
+app.use(express.static('src/public'));
+
+// Handlebars
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
 }));
@@ -13,7 +16,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'src/views');
 
 
-//Routes
+// Routes
 app.get('/', (req, res) => {
     res.render('index')
 });
