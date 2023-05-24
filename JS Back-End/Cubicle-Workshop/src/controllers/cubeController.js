@@ -3,7 +3,6 @@ const cubeManager = require('../managers/cubeManager');
 
 router.get('/create', (req, res) => {
     res.render('create');
-    console.log(cubeManager.getAll());
 });
 
 router.post('/create', (req, res) => {
