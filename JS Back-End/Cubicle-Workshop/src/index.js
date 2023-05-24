@@ -17,7 +17,7 @@ handlebarsConfig(app);
 
 // Routes
 app.use(homeController);
-app.use('/cubes', cubeController);
+app.use('/cubes', cubeController, homeController);
 
 app.listen(PORT, () => console.log(`Server is runnning on port ${PORT}...`));
 
