@@ -13,7 +13,10 @@ const footballerSchema = new mongoose.Schema({
     },
     nationality: String,
     position: String,
-    club: String,
+    team: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Team'
+    },
     foot: String,
 });
 
