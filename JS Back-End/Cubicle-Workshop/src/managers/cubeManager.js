@@ -1,10 +1,10 @@
 const Cube = require('../models/Cube');
 
-const cubes = [];
+exports.getAll = async (search, from, to) => {
 
-exports.getAll = (search, from, to) => {
-    let result = cubes.slice();
+    let result = await Cube.find().lean();
 
+    //TODO: Use db filtration instead of in memory filtering
     if (search) {
         result = result.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()));
     }
@@ -20,7 +20,7 @@ exports.getAll = (search, from, to) => {
     return result;
 }
 
-exports.getOne = (cubeId) => cubes.find(x => x.id === cubeId);
+exports.getOne = async (cubeId) => await Cube.findById(cubeId).lean();
 
 exports.create = async (cubeData) => {
 

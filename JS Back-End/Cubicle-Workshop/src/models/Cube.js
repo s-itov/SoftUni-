@@ -13,7 +13,6 @@ const cubeSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true,
-
     },
     difficultyLevel: {
         type: Number,
@@ -23,7 +22,7 @@ const cubeSchema = new mongoose.Schema({
     },
     accessories: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'accessorie'
+        ref: 'accessory'
     }
 });
 
