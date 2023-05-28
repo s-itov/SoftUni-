@@ -22,6 +22,9 @@ exports.getAll = async (search, from, to) => {
 
 exports.getOne = async (cubeId) => await Cube.findById(cubeId).lean();
 
+exports.getOneAsDocument = async (cubeId) => await Cube.findById(cubeId);
+
+
 exports.create = async (cubeData) => {
 
     let cube = new Cube({...cubeData});

@@ -14,10 +14,6 @@ const accessorySchema = new mongoose.Schema({
         required: true,
         maxLength: [120, 'You excceeded the max length of the 120 characters']
     },
-    cubes: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cube',
-    }   
 });
 
 const Accessory = mongoose.model('Accessory', accessorySchema);
