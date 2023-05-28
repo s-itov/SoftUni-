@@ -6,7 +6,7 @@ const accessoryController =  require('./controllers/accessoryController');
 
 router.use(homeController);
 router.use('/cubes', cubeController);
-router.use('/accessory', accessoryController);
+router.use('/accessorries', accessoryController);
 router.get('*', (req, res) => {
     res.redirect('/404')
 })

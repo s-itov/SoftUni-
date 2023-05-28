@@ -20,7 +20,7 @@ exports.getAll = async (search, from, to) => {
     return result;
 }
 
-exports.getOne = async (cubeId) => await Cube.findById(cubeId).lean();
+exports.getOne = async (cubeId) => await Cube.findById(cubeId).populate('accessories').lean();
 
 exports.getOneAsDocument = async (cubeId) => await Cube.findById(cubeId);
 
