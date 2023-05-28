@@ -1,6 +1,5 @@
 const Accessory = require('../models/Accessory');
 
-
 exports.create = async (accessoryData) => {
 
     let accessory = new Accessory({...accessoryData});
@@ -9,4 +8,4 @@ exports.create = async (accessoryData) => {
 
 }
 
-exports.getAll = async () => await Accessory.find().lean();
+exports.getAll = async (cube) => await Accessory.find({ _id: {$nin: cube.accessories}}).lean();

@@ -13,6 +13,7 @@ const cubeSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true,
+        match: /^https?:\/\//
     },
     difficultyLevel: {
         type: Number,
