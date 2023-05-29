@@ -27,9 +27,12 @@ module.exports = (req, res) => {
       } else {
         let modifiedData = data.toString();
 
+        console.log(modifiedData);
+
         if (pathname === '/cats/add-cat' && req.method === 'GET') {
           let catBreedPlaceholder = breeds.map((breed) => `<option value="${breed}">${breed}</option>`);
           modifiedData = modifiedData.replace('{{catBreeds}}', catBreedPlaceholder);
+
         }
 
         res.writeHead(200, { 'Content-Type': getContentType(filePath) });

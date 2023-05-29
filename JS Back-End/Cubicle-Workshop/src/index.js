@@ -4,7 +4,6 @@ const expressConfig = require('./config/expressConfig');
 const handlebarsConfig = require('./config/handlebarsConfig');
 
 const routes = require('./routes');
-const handlebars = require('express-handlebars');
 
 const app = express();
 

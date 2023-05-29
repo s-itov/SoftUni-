@@ -1,7 +1,6 @@
 {
   "name": "cubicle-workshop",
   "version": "1.0.0",
-  "description": "",
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js"
@@ -17,5 +16,6 @@
     "express-handlebars": "^7.0.7",
     "mongoose": "^7.2.1",
     "uniqid": "^5.4.0"
-  }
+  },
+  "description": ""
 }
