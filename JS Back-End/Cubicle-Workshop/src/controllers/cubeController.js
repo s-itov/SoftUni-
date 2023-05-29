@@ -32,7 +32,7 @@ router.get('/:cubeId/details', async (req, res) => {
         res.redirect('404');
     }
 
-    res.render('updatedDetailsPage', { cube })
+    res.render('details', { cube })
 })
 
 
