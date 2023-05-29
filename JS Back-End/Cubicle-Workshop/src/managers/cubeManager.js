@@ -1,8 +1,8 @@
 const Cube = require('../models/Cube');
 
-exports.getAll = async (search, from, to) => {
+exports.getAll = (search, from, to) => {
 
-    let result = await Cube.find().lean();
+    let result = Cube.find().lean();
 
     //TODO: Use db filtration instead of in memory filtering
     if (search) {
@@ -20,14 +20,6 @@ exports.getAll = async (search, from, to) => {
     return result;
 }
 
-exports.getOne = async (cubeId) => await Cube.findById(cubeId).populate('accessories').lean();
+exports.getOne =  (cubeId) =>  Cube.findById(cubeId);
 
-exports.getOneAsDocument = async (cubeId) => await Cube.findById(cubeId);
-
-
-exports.create = async (cubeData) => {
-
-    let cube = new Cube({...cubeData});
-
-    await cube.save();
-}
+exports.create =  (cubeData) => Cube.create(cubeData);

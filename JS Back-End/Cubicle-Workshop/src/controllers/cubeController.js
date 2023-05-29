@@ -26,7 +26,7 @@ router.post('/create', async (req, res) => {
 });
 
 router.get('/:cubeId/details', async (req, res) => {
-    const cube =  await cubeManager.getOne(req.params.cubeId);
+    const cube =  await cubeManager.getOne(req.params.cubeId).populate('accessories').lean();
 
     if (!cube) {
         res.redirect('404');
@@ -37,15 +37,15 @@ router.get('/:cubeId/details', async (req, res) => {
 
 
 router.get('/:cubeId/attach', async (req, res) => {
-    const cube =  await cubeManager.getOne(req.params.cubeId);
-    const accessories = await accessoryManager.getAll(cube);
+    const cube =  await cubeManager.getOne(req.params.cubeId).lean();
+    const accessories = await accessoryManager.getAll(cube).lean();
 
     res.render('attachAccessory', { cube, accessories });
 });
 
 
 router.post('/:cubeId/attach', async (req, res) => {
-    const cube =  await cubeManager.getOneAsDocument(req.params.cubeId);
+    const cube =  await cubeManager.getOne(req.params.cubeId);
     const accessoryID = req.body.accessory;
 
     cube.accessories.push(accessoryID);
