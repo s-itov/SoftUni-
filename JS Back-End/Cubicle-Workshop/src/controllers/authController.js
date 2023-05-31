@@ -8,7 +8,6 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-
     const { username, password } = req.body;
 
     try {
@@ -19,7 +18,6 @@ router.post('/login', async (req, res) => {
     }
     
     res.redirect('/');
-
 })
 
 router.get('/register', (req, res) => {
@@ -44,7 +42,6 @@ router.post('/register', async (req, res) => {
     console.log(user);
 
     res.redirect('/login');
-
 });
 
 module.exports = router;
