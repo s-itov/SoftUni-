@@ -7,6 +7,21 @@ router.get('/login', (req, res) => {
     res.render('auth/login');
 });
 
+router.post('/login', async (req, res) => {
+
+    const { username, password } = req.body;
+
+    try {
+        const user = await authManager.login(username, password);
+    }
+    catch (err){
+        console.log(err);
+    }
+    
+    res.redirect('/');
+
+})
+
 router.get('/register', (req, res) => {
     res.render('auth/register');
 });
