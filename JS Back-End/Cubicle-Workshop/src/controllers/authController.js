@@ -39,7 +39,7 @@ router.post('/register', async (req, res) => {
         return res.redirect('404');
     }
 
-    const user = await authManager.register(username, password);
+    await authManager.register(username, password);
 
     res.redirect('/login');
 });
