@@ -1,10 +1,15 @@
 const router = require('express').Router();
 const cubeManager = require('../managers/cubeManager');
 const accessoryManager = require('../managers/accessoryManager');
+const { isAuthenticated } = require('../middlewares/authMiddleware');
 
-router.get('/create', (req, res) => {
+const jwt = require('../lib/jsonwebtoken');
+
+router.get('/create', isAuthenticated, (req, res) => {
+    console.log(req.user);
     res.render('create');
 });
+
 
 router.post('/create', async (req, res) => {
 
