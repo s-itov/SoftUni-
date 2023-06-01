@@ -2,16 +2,17 @@ const router = require('express').Router();
 const cubeManager = require('../managers/cubeManager');
 const accessoryManager = require('../managers/accessoryManager');
 const { isAuthenticated } = require('../middlewares/authMiddleware');
+const cubeUtils = require('../utils/cubeUtils');
+
 
 const jwt = require('../lib/jsonwebtoken');
 
 router.get('/create', isAuthenticated, (req, res) => {
-    console.log(req.user);
-    res.render('create');
+    res.render('cube/create');
 });
 
 
-router.post('/create', async (req, res) => {
+router.post('/create', isAuthenticated, async (req, res) => {
 
     const {
         name,
@@ -37,7 +38,7 @@ router.get('/:cubeId/details', async (req, res) => {
         res.redirect('404');
     }
 
-    res.render('details', { cube })
+    res.render('cube/details', { cube })
 })
 
 
@@ -45,7 +46,7 @@ router.get('/:cubeId/attach', async (req, res) => {
     const cube =  await cubeManager.getOne(req.params.cubeId).lean();
     const accessories = await accessoryManager.showRemainingAccessories(cube).lean();
 
-    res.render('attachAccessory', { cube, accessories });
+    res.render('accessory/attach', { cube, accessories });
 });
 
 
@@ -59,5 +60,13 @@ router.post('/:cubeId/attach', async (req, res) => {
 
     res.redirect(`/cubes/${cube._id}/details`);
 });
+
+router.get('/:cubeId/edit', async (req, res) => {
+    const cube =  await cubeManager.getOne(req.params.cubeId).lean();
+
+    const difficultyLevels = cubeUtils.generateDifficultyLevels(cube.difficultyLevel);
+
+    res.render('cube/edit', { cube, difficultyLevels });
+})
 
 module.exports = router;
