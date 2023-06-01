@@ -11,11 +11,7 @@ exports.login = async (username, passowrd) => {
 
     const user = await this.getUserByUsername(username);
 
-    console.log(user);
-
     const isValid = await user.validatePassword(passowrd);
-
-    console.log(isValid);
     
     if(!user || !isValid) {
         throw 'Username or password don\'t match';

@@ -41,8 +41,6 @@ router.post('/register', async (req, res) => {
 
     const user = await authManager.register(username, password);
 
-    console.log(user);
-
     res.redirect('/login');
 });
 

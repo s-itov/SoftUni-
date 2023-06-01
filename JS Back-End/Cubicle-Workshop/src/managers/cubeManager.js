@@ -1,6 +1,6 @@
 const Cube = require('../models/Cube');
 
-exports.getAll = (search, from, to) => {
+exports.getAll =  (search, from, to) => {
 
     let result = Cube.find().lean();
 
@@ -22,4 +22,6 @@ exports.getAll = (search, from, to) => {
 
 exports.getOne =  (cubeId) =>  Cube.findById(cubeId);
 
-exports.create =  (cubeData) => Cube.create(cubeData);
+exports.getOneAsDocument =  (cubeId) =>  Cube.findById(cubeId);
+
+exports.create =  (cubeData) => Cube.create({ ...cubeData });
