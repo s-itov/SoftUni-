@@ -11,10 +11,10 @@
             <input type="text" id="image" name="imageUrl" value="{{imageUrl}}">
             <label for="difficulty">Difficulty</label>
             <select id="difficulty" name="difficultyLevel" />
-        {{/with}}
-            {{#each difficultyLevels}}
-            <option value="{{key}}"{{#if selected}}selected{{/if}}>{{key}} - {{label}}</option>
-            {{/each}}
+            {{/with}}
+                {{#each difficultyLevels}}
+                     {{>difficultyLevel}}
+                {{/each}}
             </select>
             <input type="submit" value="Edit">
         </form>

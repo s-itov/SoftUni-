@@ -4,16 +4,16 @@
         {{#with cube}}
         <form method="POST">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" value="{{name}}">
+            <input type="text" id="name" name="name" value="{{name}}" disabled="true">
             <label for="description">Description</label>
-            <textarea id="description" name="description">{{description}}</textarea>
+            <textarea id="description" name="description" disabled="true">{{description}}</textarea>
             <label for="image">ImageUrl</label>
-            <input type="text" id="image" name="imageUrl" value="{{imageUrl}}">
+            <input type="text" id="image" name="imageUrl" value="{{imageUrl}}" disabled="true">
             <label for="difficulty">Difficulty</label>
-            <select id="difficulty" name="difficultyLevel" />
+            <select id="difficulty" name="difficultyLevel" disabled="true" />
         {{/with}}
             {{#each difficultyLevels}}
-            <option value="{{key}}"{{#if selected}}selected{{/if}}>{{key}} - {{label}}</option>
+                {{>difficultyLevel}}
             {{/each}}
             </select>
             <input type="submit" value="Delete">

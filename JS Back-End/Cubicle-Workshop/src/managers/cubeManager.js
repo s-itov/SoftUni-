@@ -24,7 +24,7 @@ exports.getOne =  (cubeId) =>  Cube.findById(cubeId);
 
 exports.getOneAsDocument =  (cubeId) =>  Cube.findById(cubeId);
 
-exports.create =  (cubeData) => Cube.create({ ...cubeData });
+exports.create =  (cubeData) => Cube.create(cubeData);
 
 exports.update = (cubeId, cube) => Cube.findByIdAndUpdate(cubeId, cube, { runValidators : true });
 

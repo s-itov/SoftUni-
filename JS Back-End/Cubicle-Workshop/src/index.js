@@ -19,19 +19,15 @@ expressConfig(app);
 // Handlebars config
 handlebarsConfig(app);
 
-//CookieParser /always before rooutes/
+//CookieParser /always before routes/
 app.use(cookieParser());
 
 //Authentication middleware
 app.use(authMiddleware.authentication);
 
-// Routes
+//Routes
 app.use(routes);
-
 
 initDatabase()
     .then(() => app.listen(PORT, () => console.log(`Server is runnning on port ${PORT}...`)))
     .catch((err) => console.log(err));
-
-
-
