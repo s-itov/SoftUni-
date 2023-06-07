@@ -17,7 +17,10 @@ exports.login = async (username, passowrd) => {
         throw 'Username or password don\'t match';
     }
 
-    const payload = { username: user.username }
+    const payload = {
+        _id: user._id,
+        username: user.username
+    }
     const token =  await jwt.sign(payload, 'somesecret', {expiresIn: '2h'});
 
     return token;

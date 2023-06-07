@@ -4,7 +4,6 @@ const accessoryManager = require('../managers/accessoryManager');
 const { isAuthenticated } = require('../middlewares/authMiddleware');
 const cubeUtils = require('../utils/cubeUtils');
 
-const jwt = require('../lib/jsonwebtoken');
 
 router.get('/create', isAuthenticated, (req, res) => {
     res.render('cube/create');
@@ -25,6 +24,7 @@ router.post('/create', isAuthenticated, async (req, res) => {
         description,
         imageUrl,
         difficultyLevel: Number(difficultyLevel),
+        owner: req.user._id,
     });
 
     res.redirect('/');
@@ -34,10 +34,12 @@ router.get('/:cubeId/details', async (req, res) => {
     const cube =  await cubeManager.getOne(req.params.cubeId).populate('accessories').lean();
 
     if (!cube) {
-        res.redirect('404');
+        return res.redirect('/404');
     }
 
-    res.render('cube/details', { cube })
+    const isOwner = cube?.owner == req.user?._id;
+
+    res.render('cube/details', { cube, isOwner });
 });
 
 
