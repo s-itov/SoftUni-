@@ -31,13 +31,13 @@ router.post('/register', async (req, res) => {
     const {username, password, repeatPassword } = req.body;
 
     if (password !== repeatPassword) {
-        return res.redirect('404'); //TODO show message to the user
+        return res.redirect('/register'); //TODO show message to the user
     }
 
     const existingUser = await authManager.getUserByUsername(username);
 
     if (existingUser) {
-        return res.redirect('404');
+        return res.redirect('/register'); //TODO show message to the user
     }
 
     await authManager.register(username, password);

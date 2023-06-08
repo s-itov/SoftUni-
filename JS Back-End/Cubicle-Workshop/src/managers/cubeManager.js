@@ -1,8 +1,8 @@
 const Cube = require('../models/Cube');
 
-exports.getAll =  (search, from, to) => {
+exports.getAll = async (search, from, to) => {
 
-    let result = Cube.find().lean();
+    let result =  await Cube.find().lean();
 
     //TODO: Use db filtration instead of in memory filtering
     if (search) {

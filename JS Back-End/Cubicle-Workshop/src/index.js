@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieParser = require('cookie-parser')
 
 const initDatabase = require('./config/databaseInit');
 const expressConfig = require('./config/expressConfig');
@@ -18,12 +17,6 @@ expressConfig(app);
 
 // Handlebars config
 handlebarsConfig(app);
-
-//CookieParser /always before routes/
-app.use(cookieParser());
-
-//Authentication middleware
-app.use(authMiddleware.authentication);
 
 //Routes
 app.use(routes);
