@@ -1,5 +1,7 @@
 const jwt = require('../lib/jsonwebtoken');
 
+const { SECRET } = require('../config/config');
+
 const User = require('../models/User');
 
 
@@ -21,7 +23,7 @@ exports.login = async (username, passowrd) => {
         _id: user._id,
         username: user.username
     }
-    const token =  await jwt.sign(payload, 'somesecret', {expiresIn: '2h'});
+    const token =  await jwt.sign(payload, SECRET, {expiresIn: '2h'});
 
     return token;
 

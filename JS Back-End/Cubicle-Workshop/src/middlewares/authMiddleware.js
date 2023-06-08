@@ -1,11 +1,12 @@
 const jwt = require('../lib/jsonwebtoken');
+const { SECRET } = require('../config/config'); 
 
 exports.authentication = async (req, res, next) => {
     const token = req.cookies.auth;
 
     if (token) {
         try {
-            const decodedToken = await jwt.verify(token, 'somesecret')
+            const decodedToken = await jwt.verify(token, SECRET)
 
             req.user = decodedToken;
             req.isAuthenticated = true;
