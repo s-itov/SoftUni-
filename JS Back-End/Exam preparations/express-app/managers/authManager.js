@@ -10,7 +10,8 @@ exports.register = async (username, email, password, repeatPassword) => {
     if (password !== repeatPassword) {
         throw new Error('Password missmatch');
     }
-    // TODO: Validate password
+
+    // TODO: Validate password via requirements
     
     const existingUser = await this.findByEmail(email);
 
