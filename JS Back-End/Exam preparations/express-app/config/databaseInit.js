@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const host = process.env.HOST;
-const port = process.env.PORT;
-const project = process.env.PROJECT;
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
+const PROJECT = process.env.PROJECT;
 
-const uri = `mongodb://${host}:${port}/${project}`;
+const uri = `mongodb://${HOST}:${PORT}/${PROJECT}`;
 
 async function initDatabase() {
     mongoose.set('strictQuery', false);
