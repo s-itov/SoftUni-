@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const cookieParser = require('cookie-parser');
 const handlebars = require('express-handlebars');
-const routes = require('./routes');
 
+const routes = require('./routes');
 const initDatabase = require('./config/databaseInit');
 const { authentication } = require('./middlewares/authMiddleware');
 const PORT = process.env.LISTEN_PORT;
