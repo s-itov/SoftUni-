@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('../lib/jwt');
-const { SECRET }  = require('../config/config');
+const SECRET = process.env.BCRYPT_SECRET;
 
 
 exports.findByEmail = (email) => User.findOne({email});

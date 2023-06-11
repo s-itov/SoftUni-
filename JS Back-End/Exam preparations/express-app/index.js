@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const initDatabase = require('./config/databaseInit');
 const cookieParser = require('cookie-parser');
 const { authentication } = require('./middlewares/authMiddleware');

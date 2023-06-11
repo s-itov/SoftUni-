@@ -1,5 +1,5 @@
 const jwt = require('../lib/jwt');
-const { SECRET } = require('../config/config');
+const SECRET = process.env.BCRYPT_SECRET;
 
 exports.authentication = async (req, res, next) => {
     const token = req.cookies.auth;

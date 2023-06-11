@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
-const project = 'crypto'; // Change the database name
-const uri = `mongodb://127.0.0.1:27017/${project}`;
+const host = process.env.HOST;
+const port = process.env.PORT;
+const project = process.env.PROJECT;
+
+const uri = `mongodb://${host}:${port}/${project}`;
 
 async function initDatabase() {
     mongoose.set('strictQuery', false);
