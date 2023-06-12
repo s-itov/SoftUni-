@@ -38,8 +38,8 @@ router.post('/create', isAuth, async (req, res) => {
     } catch (error) {
         return res.status(404).render('crypto/create', { error: getErrorMessage(error) });
     }
-
-    res.redirect('/catalog');
+    
+    res.redirect('/crypto/catalog');
 });
 
 module.exports = router;

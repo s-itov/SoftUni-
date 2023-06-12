@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('../lib/jwt');
 const SECRET = process.env.BCRYPT_SECRET;
 
-
 exports.findByEmail = (email) => User.findOne({email});
 
 exports.register = async (username, email, password, repeatPassword) => {
@@ -11,12 +10,18 @@ exports.register = async (username, email, password, repeatPassword) => {
         throw new Error('Password missmatch');
     }
 
-    // TODO: Validate password via requirements
+    if (password === '') {
+        throw new Error('Password is required');
+    }
+
+    if (password.length < 4) {
+        throw new Error('Password must be at least 4 characters long');
+    }
     
     const existingUser = await this.findByEmail(email);
 
     if (existingUser) {
-        throw new Error('User with the same username already exists');      
+        throw new Error('User with the same email already exists');      
     }
     
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -32,6 +37,15 @@ exports.login = async (email, password) => {
     if (!user) {
         throw new Error('Invalid email or password');
     }
+
+    if (password === '') {
+        throw new Error('Password is required');
+    }
+
+    if (password.length < 4) {
+        throw new Error('Password must be at least 4 characters long');
+    }
+    
 
     //If Password is valid
     const isValid = await bcrypt.compare(password, user.password);
