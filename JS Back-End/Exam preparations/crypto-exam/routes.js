@@ -8,7 +8,7 @@ router.use(homeController);
 router.use(authController);
 router.use('/crypto', cryptoController);
 
-router.get('*', (req, res) => {
+router.all('*', (req, res) => {
     res.render('404');
 })
 
