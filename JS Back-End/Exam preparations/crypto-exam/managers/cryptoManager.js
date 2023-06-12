@@ -1,8 +1,23 @@
 const Crypto = require('../models/Crypto');
 
-exports.getAll = () => Crypto.find();
+exports.getAll = () => Crypto.find({}).lean();
 
 exports.getOne = (cryptoId) => Crypto.findById(cryptoId);
+
+exports.search = async (search, paymentMethod) => {
+    let crypto = await this.getAll();
+
+    if (search) {
+        crypto = crypto.filter(crypto => crypto.name.toLowerCase().includes(search.toLowerCase()));
+        console.log(crypto);
+    }
+
+    if (paymentMethod) {
+        crypto = crypto.filter(x => x.paymentMethod == paymentMethod);
+    }
+
+    return crypto; 
+};
 
 exports.deleteById = (isOwner, cryptoId) => {
     if (!isOwner) {

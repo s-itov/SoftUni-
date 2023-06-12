@@ -7,12 +7,21 @@ const { getErrorMessage } = require('../utils/errorUtils');
 
 router.get('/catalog', async (req, res) => {
     try {
-        const crypto = await cryptoManager.getAll().lean();
+        const crypto = await cryptoManager.getAll();
         res.render('crypto/catalog', { crypto });
     } catch (error) {
         return res.status(404).render('crypto/catalog', { error: getErrorMessage(error) });
     }
 });
+
+router.get('/search', async (req, res) => {
+    const { name, paymentMethod } = req.query;
+ 
+    const crypto = await cryptoManager.search(name, paymentMethod);
+    
+    res.render('crypto/search', { crypto });
+})
+
 
 router.get('/:cryptoId/details', async (req, res) => {
 
@@ -79,8 +88,6 @@ router.post('/:cryptoId/edit', isAuth, async (req, res) => {
         return res.status(404).render('404', { error: getErrorMessage(error) });
 
     }
-
-
 
     res.redirect(`/crypto/${req.params.cryptoId}/details`);
 });
