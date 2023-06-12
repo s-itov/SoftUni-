@@ -1,4 +1,5 @@
 const jwt = require('../lib/jwt');
+const cryptoManager = require('../managers/cryptoManager');
 const SECRET = process.env.BCRYPT_SECRET;
 
 exports.authentication = async (req, res, next) => {

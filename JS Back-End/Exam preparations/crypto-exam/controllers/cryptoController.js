@@ -26,6 +26,21 @@ router.get('/:cryptoId/details', async (req, res) => {
 
 })
 
+router.get('/:cryptoId/delete', isAuth, async (req, res) => {
+
+    const crypto = await cryptoManager.getOne(req.params.cryptoId).lean();
+    const isOwner = crypto?.owner == req.user?._id;
+
+    try {
+        await cryptoManager.deleteById(isOwner, req.params.cryptoId);
+    } catch (error) {
+        return res.status(404).render('404', { error: getErrorMessage(error) });
+    }
+
+    res.redirect('/crypto/catalog');
+
+})
+
 router.get('/create', isAuth, (req, res) => {
     res.render('crypto/create');
 });
@@ -38,7 +53,7 @@ router.post('/create', isAuth, async (req, res) => {
     } catch (error) {
         return res.status(404).render('crypto/create', { error: getErrorMessage(error) });
     }
-    
+
     res.redirect('/crypto/catalog');
 });
 
