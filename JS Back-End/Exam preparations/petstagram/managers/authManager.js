@@ -1,7 +1,8 @@
+const SECRET = process.env.BCRYPT_SECRET;
+
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('../lib/jwt');
-const SECRET = process.env.BCRYPT_SECRET;
 
 
 exports.findByUsername = (username) => User.findOne({username});
@@ -28,8 +29,6 @@ exports.register = async (username, email, password, repeatPassword) => {
 exports.login = async (username, password) => {
     //If User exists
     const user = await this.findByUsername(username);
-
-    console.log(user);
 
     if (!user) {
         throw new Error('Invalid username or password');
