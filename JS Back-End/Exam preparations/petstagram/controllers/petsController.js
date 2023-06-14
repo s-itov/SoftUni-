@@ -62,7 +62,7 @@ router.post('/:petId/edit', isAuth, async (req, res) => {
 
 });
 
-router.get('/:petId/delete', async (req, res) => {
+router.get('/:petId/delete', isAuth, async (req, res) => {
 
     try {
         await petsManager.deletePhoto(req.params.petId);
@@ -75,7 +75,7 @@ router.get('/:petId/delete', async (req, res) => {
 
 });
 
-router.post('/:petId/comment', async (req, res) => {
+router.post('/:petId/comment', isAuth, async (req, res) => {
 
     const { comment } = req.body;
 
