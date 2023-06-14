@@ -3,9 +3,9 @@ const petsManager = require('../managers/petsManager');
 
 router.get('/profile', async (req, res) => {
 
-  const userPictures = await petsManager
-    .getAll({ 'owner.username': req.user.username })
-    .populate('owner')
+  const pictures = await petsManager.getAll().populate('owner');
+
+  const userPictures = pictures.filter(x => x.owner.username == req.user.username);
 
   res.render('profile', {
     username: req.user.username,

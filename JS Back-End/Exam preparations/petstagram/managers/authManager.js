@@ -8,6 +8,11 @@ const jwt = require('../lib/jwt');
 exports.findByUsername = (username) => User.findOne({username});
 
 exports.register = async (username, email, password, repeatPassword) => {
+    
+    if (password === '') {
+        throw new Error('Password is required');
+    }
+
     if (password !== repeatPassword) {
         throw new Error('Password missmatch');
     }

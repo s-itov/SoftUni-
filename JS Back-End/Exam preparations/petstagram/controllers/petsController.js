@@ -4,11 +4,10 @@ const { isAuth } = require('../middlewares/authMiddleware');
 const { getErrorMessage } = require('../utils/errorUtils');
 
 router.get('/catalog', async (req, res) => {
-
     try {
         const pets = await petsManager.getAll().populate('owner');
-
         res.render('pets/catalog', { pets });
+
     } catch (error) {
         return res.status(404).render('pets/catalog', { error: getErrorMessage(error) });
     }
@@ -67,6 +66,7 @@ router.get('/:petId/delete', async (req, res) => {
 
     try {
         await petsManager.deletePhoto(req.params.petId);
+
     } catch (error) {
         return res.status(404).render('pets/details', { error: getErrorMessage(error) });
     }
@@ -107,8 +107,5 @@ router.post('/create', isAuth, async (req, res) => {
     res.redirect('/pets/catalog');
 
 });
-
-
-
 
 module.exports = router;

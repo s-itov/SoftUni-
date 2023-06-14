@@ -5,10 +5,9 @@ const authController = require('./controllers/authController');
 const petsController = require('./controllers/petsController');
 const userController = require('./controllers/userController');
 
-
 router.use(homeController);
 router.use(authController);
-router.use(userController);
+router.use('/user', userController);
 router.use('/pets', petsController);
 router.all('*', (req, res) => {
     res.render('404');

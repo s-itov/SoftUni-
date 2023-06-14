@@ -28,7 +28,7 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     const { username, email, password, repeatPassword } = req.body;
-
+    
     try {
         await authManager.register(username, email, password, repeatPassword);
 

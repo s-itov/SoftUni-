@@ -13,3 +13,5 @@ exports.comment = (petId, userId, comment) => Photo.findByIdAndUpdate(petId, { $
 
 exports.update = (petId, photoData) => Photo.findByIdAndUpdate(petId, {...photoData})
 
+exports.getAllUserPhotos = (username) => Photo.find({ 'owner.username': username });
+
