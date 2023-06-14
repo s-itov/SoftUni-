@@ -71,6 +71,7 @@
                         <p class="petName">Name: {{pet.name}}</p>
                         <p class="petAge">Age: {{pet.age}}</p>
                     </div>
+                    {{#each comments}}
                     <div class="comments">
                         <div class="comments-top">
                             <div class="userDetails">
@@ -83,20 +84,21 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    
                                     <!--User's username-->
-                                    <p><b>StevIvanov</b>- OMG where can i get one</p>
+                                    <p><b>{{username}}</b>- {{comment}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {{/each}}
                 </div>
-                {{#if isAuth}}
+                {{#if isAuthenticated}}
                 {{#unless isOwner}}
                 <div class="addComments">
                     <!-- Start Add Comments Form -->
-                    <form method="#" action="#">
-                        <textarea id="comment-textarea" name="" cols="40" rows="10"
+                    <form method="POST" action="/pets/{{pet._id}}/comment">
+                        <textarea id="comment-textarea" name="comment" cols="40" rows="10"
                             placeholder="Add comment..."></textarea>
                         <!-- Post Comments Button -->
                         <button type="submit">Post</button>

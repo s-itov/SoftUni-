@@ -29,13 +29,11 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
     const { username, email, password, repeatPassword } = req.body;
 
-    console.log(req.body);
-
     try {
         await authManager.register(username, email, password, repeatPassword);
 
         //This register function is automatically login when successful register.
-        const token = await authManager.login(email, password);
+        const token = await authManager.login(username, password);
         res.cookie('auth', token);
         res.redirect('/'); // Check where to redirect!
 

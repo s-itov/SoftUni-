@@ -23,7 +23,7 @@ const photoSchema = new mongoose.Schema({
     },
     commentList: [{
         userId: {
-            type: String,
+            type: mongoose.Types.ObjectId,
             ref: 'User'
         },
         comment: {

@@ -43,6 +43,7 @@ exports.login = async (username, password) => {
 
     const payload = {
         _id: user._id,
+        email: user.email,
         username: user.username
     }
 
