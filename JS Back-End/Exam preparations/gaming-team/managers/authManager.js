@@ -7,11 +7,15 @@ const SECRET = process.env.BCRYPT_SECRET;
 exports.findByEmail = (email) => User.findOne({email});
 
 exports.register = async (username, email, password, repeatPassword) => {
+       
+    if (password.length < 4) {
+        throw new Error('Password is too short');
+    }
+   
     if (password !== repeatPassword) {
         throw new Error('Password missmatch');
     }
 
-    // TODO: Validate password via requirements
     
     const existingUser = await this.findByEmail(email);
 
@@ -26,6 +30,11 @@ exports.register = async (username, email, password, repeatPassword) => {
 
 
 exports.login = async (email, password) => {
+
+    if (password.length < 4) {
+        throw new Error('Password is too short');
+    }
+   
     //If User exists
     const user = await this.findByEmail(email);
 
