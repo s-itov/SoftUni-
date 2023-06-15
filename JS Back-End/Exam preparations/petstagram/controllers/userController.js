@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const petsManager = require('../managers/petsManager');
+const { isAuth } = require('../middlewares/authMiddleware');
 
-router.get('/profile', async (req, res) => {
+
+router.get('/profile', isAuth, async (req, res) => {
 
   const pictures = await petsManager.getAll().populate('owner');
 
