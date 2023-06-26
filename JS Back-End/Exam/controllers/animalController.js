@@ -69,18 +69,16 @@ router.get('/:animalId/edit', isAuth, async (req, res) => {
 
 router.post('/:animalId/edit', isAuth, async (req, res) => {
     const animalId = req.params.animalId;
-    const animalData = req.body;
+    const animal = req.body;
 
     try {
-        await animalManager.update(animalId, animalData);
-        
+        await animalManager.update(animalId, animal);
+
+        res.redirect(`/animals/${animalId}/details`);
+                
     } catch (error) {
-        return res.status(404).render('animal/edit', { error: getErrorMessage(error) });
-
+        res.render('animal/edit', { error: getErrorMessage(error), animal });
     };
-
-    res.redirect(`/animals/${animalId}/details`);
-
 });
 
 

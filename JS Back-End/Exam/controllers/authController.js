@@ -4,10 +4,18 @@ const { isAuth } = require('../middlewares/authMiddleware');
 const { getErrorMessage } = require('../utils/errorUtils');
 
 router.get('/login', (req, res) => {
+    if (req.user) {
+        return res.render('404', { error: ['User already logged in!'] });
+    }
+
     res.render('auth/login');
 });
 
 router.post('/login', async (req, res) => {
+    if (req.user) {
+        return res.render('404', { error: ['User already logged in!'] });
+    }
+
     const { email, password } = req.body;
 
     try {
@@ -21,10 +29,18 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/register', (req, res) => {
+    if (req.user) {
+        return res.render('404', { error: ['User already logged in!'] });
+    }
+
     res.render('auth/register');
 });
 
 router.post('/register', async (req, res) => {
+    if (req.user) {
+        return res.render('404', { error: ['User already logged in!'] });
+    }
+
     const { email, password, repeatPassword } = req.body;
 
     try {
@@ -32,10 +48,10 @@ router.post('/register', async (req, res) => {
 
         const token = await authManager.login(email, password);
         res.cookie('auth', token);
-        res.redirect('/'); 
+        res.redirect('/');
 
     } catch (error) {
-        res.status(404).render('auth/register', { error: getErrorMessage(error) }); 
+        res.status(404).render('auth/register', { error: getErrorMessage(error) });
     }
 
 });
