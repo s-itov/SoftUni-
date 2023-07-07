@@ -12,11 +12,12 @@ export class ApiService {
   getPosts(limit?: number) {
     const { appUrl } = environment;
     const limitFilter = limit ? `?limit=${limit}` : '';
+
     return this.http.get(`${appUrl}/posts${limitFilter}`);
   }
-  getThemes() {
 
+  getThemes() {
     const { appUrl } = environment;
-    return this.http.get(`${appUrl}/posts`);
+    return this.http.get(`${appUrl}/themes`);
   }
 }
