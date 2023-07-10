@@ -2,6 +2,8 @@
     <div *ngIf="isLoading">
         <app-loader />
     </div>
+
+    <app-welcome />
     
     <div class="theme-title" *ngIf="!isLoading"> 
         <div *ngFor="let theme of themesList" class="theme-container">

@@ -2,16 +2,14 @@ import { Component } from '@angular/core';
 import { UserService } from '../user/user.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-welcome',
+  templateUrl: './welcome.component.html',
+  styleUrls: ['./welcome.component.css']
 })
-export class HomeComponent {
-
+export class WelcomeComponent {
   constructor(private userService: UserService) {}
 
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
-
 }
