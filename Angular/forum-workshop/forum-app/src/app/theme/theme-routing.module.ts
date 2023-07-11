@@ -4,6 +4,7 @@ import { MainComponent } from '../main/main.component';
 import { NewThemeComponent } from './new-theme/new-theme.component';
 import { CurrentThemeComponent } from './current-theme/current-theme.component';
 import { AuthActivate } from '../core/guards/auth.activate';
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
