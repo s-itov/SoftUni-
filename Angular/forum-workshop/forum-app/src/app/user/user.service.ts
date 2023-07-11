@@ -14,8 +14,12 @@ export class UserService {
 
   constructor() {
     try {
-      const lsUser = localStorage.getItem(this.USER_KEY) || '';
-      this.user = JSON.parse(lsUser);
+      const lsUser = localStorage.getItem(this.USER_KEY);
+      if (lsUser) {
+        this.user = JSON.parse(lsUser);
+      } else {
+        this.user = undefined;
+      }
     } catch (error) {
       this.user = undefined;
     }
@@ -25,10 +29,21 @@ export class UserService {
     this.user = {
       email: 'peter@abv.bg',
       firstName: 'Peter',
+      phoneNumber: '+359883545429',
+      password: '123456',
+      rePassword: '123456'
     };
 
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
 
+  }
+
+  register(user: User): void {
+    // Perform validation on the user object if required
+  
+    // Save the user data
+    this.user = user;
+    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
   logout(): void {
