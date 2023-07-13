@@ -28,23 +28,24 @@ export class UserService {
     }
   }
 
-  login(): void {
-    this.user = {
-      email: 'peter@abv.bg',
-      username: 'Peter',
-      tel: '+359883545429',
-      password: '123456',
-      rePassword: '123456',
-    };
+  login(email: string, password: string): void {
+    const { appUrl } = environment;
+
+    this.http.post<User>(`${appUrl}/login`, { email, password }).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
   register(user: User): void {
-    // Perform validation on the user object if required
     const { appUrl } = environment;
 
-    // Save the user data
     this.user = user;
 
     this.http.post<User>(`${appUrl}/register`, this.user).subscribe(

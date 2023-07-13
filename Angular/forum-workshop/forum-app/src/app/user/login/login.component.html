@@ -1,13 +1,12 @@
 <div class="container">
-    <form class="login" action="" method="post">
+    <form class="login" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
 
         <fieldset>
             <h2>Login Form</h2>
 
             <p class="field field-icon">
                 <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                <input class="input-error" type="email" name="email" id="email" placeholder="john.doe@gmail.com"
-                    #inputEmail>
+                <input class="input-error" type="email" name="email" id="email" placeholder="john.doe@gmail.com" ngModel>
             </p>
             <p class="error">
                 Email is required!
@@ -18,7 +17,7 @@
 
             <p class="field field-icon">
                 <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                <input type="password" name="password" id="password" placeholder="******" #inputPassword>
+                <input type="password" name="password" id="password" placeholder="******" #inputPassword ngModel>
             </p>
             <!-- <p class="error">
                 Password is required!
@@ -27,7 +26,7 @@
                 Password must be at least 4 characters!
             </p> -->
 
-            <button (click)="login(inputEmail.value, inputPassword.value)">Login</button>
+            <button>Login</button>
 
             <p class="text-center">
                 Have an account?

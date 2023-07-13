@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   constructor(private userService: UserService, private router: Router) {}
 
-  login(email: string, password: string): void {
-      //TODO: for now we are not handling the data
+  login(loginForm: NgForm): void {
 
-      this.userService.login();
-      this.router.navigate(['/']);
+    const value: { email: string, password: string } = loginForm.value;
+
+    this.userService.login(value.email, value.password);
+
+    this.router.navigate(['/']);
   }
 }

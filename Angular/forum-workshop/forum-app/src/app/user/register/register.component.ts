@@ -24,7 +24,7 @@ export class RegisterComponent {
     const user: User = {
       email: value.email,
       username: value.username,
-      tel:value.tel,
+      tel: value.tel,
       password: value.password,
       rePassword: value.rePassword
     };
