@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/types/user';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-register',
@@ -11,20 +13,22 @@ import { User } from 'src/types/user';
 export class RegisterComponent {
   constructor(private userService: UserService, private router: Router) {}
 
-  register(email: string, firstName: string,  phoneNumber: string, password: string,  rePassword: string): void {
+  register(registerForm: NgForm): void {
 
-    if (password !== rePassword) {
+    const value: { email: string, username: string,  tel: string, password: string,  rePassword: string} = registerForm.value;
+
+    if (value.password !== value.rePassword) {
       throw new Error("The passwords don't match");
     }
 
     const user: User = {
-      email: email,
-      firstName: firstName,
-      phoneNumber: phoneNumber,
-      password: password,
-      rePassword: rePassword
+      email: value.email,
+      username: value.username,
+      tel:value.tel,
+      password: value.password,
+      rePassword: value.rePassword
     };
-  
+      
     this.userService.register(user);
 
     this.router.navigate(['/']);

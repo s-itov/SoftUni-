@@ -30,8 +30,12 @@ export class ApiService {
 
   addTheme(themeName: string, themeText: string) {
     const { appUrl } = environment;
+    
 
-    return this.http.post(`${appUrl}/themes`, { themeName, themeText });
+    //This dont work - needs token
+
+    return  this.http.post(`${appUrl}/themes`, { themeName, themeText });
+
       
   }
 }

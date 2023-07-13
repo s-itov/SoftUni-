@@ -14,6 +14,7 @@ import { UserModule } from './user/user.module';
 import { ThemeModule } from './theme/theme.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CoreModule,
     HttpClientModule,
     SharedModule,
-
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

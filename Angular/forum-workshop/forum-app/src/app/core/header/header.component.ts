@@ -15,7 +15,7 @@ constructor(private userService: UserService, private router: Router) {}
   }
 
   get firstName(): string {
-    return this.userService.user?.firstName || '';
+    return this.userService.user?.username || '';
   }
 
   logout(): void {

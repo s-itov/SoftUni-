@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'src/types/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +14,7 @@ export class UserService {
     return !!this.user;
   }
 
-  constructor() {
+  constructor(private http: HttpClient) {
     try {
       const lsUser = localStorage.getItem(this.USER_KEY);
       if (lsUser) {
@@ -28,8 +30,8 @@ export class UserService {
   login(): void {
     this.user = {
       email: 'peter@abv.bg',
-      firstName: 'Peter',
-      phoneNumber: '+359883545429',
+      username: 'Peter',
+      tel: '+359883545429',
       password: '123456',
       rePassword: '123456'
     };
@@ -40,10 +42,15 @@ export class UserService {
 
   register(user: User): void {
     // Perform validation on the user object if required
-  
+    const { appUrl } = environment;
+
     // Save the user data
     this.user = user;
+    
+    //this doesnt work
+    this.http.post(`${appUrl}/register`, {...this.user});
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+    
   }
 
   logout(): void {
