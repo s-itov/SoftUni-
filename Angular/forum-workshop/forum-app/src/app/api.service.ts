@@ -31,11 +31,14 @@ export class ApiService {
   addTheme(themeName: string, themeText: string) {
     const { appUrl } = environment;
     
-
-    //This dont work - needs token
-
-    return  this.http.post(`${appUrl}/themes`, { themeName, themeText });
-
-      
+    //This dosent work - needs token
+    this.http.post(`${appUrl}/themes`, { themeName, themeText }).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.error(error);
+      }    
+    );     
   }
 }
