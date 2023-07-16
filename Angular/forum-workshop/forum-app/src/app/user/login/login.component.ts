@@ -11,10 +11,14 @@ import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/validators/constants';
 })
 export class LoginComponent {
   appEmailDomains = DEFAULT_EMAIL_DOMAINS;
-  
+
   constructor(private userService: UserService, private router: Router) {}
 
   login(loginForm: NgForm): void {
+
+    if(loginForm.invalid){
+      return;
+    }
 
 
     const value: { email: string, password: string } = loginForm.value;
